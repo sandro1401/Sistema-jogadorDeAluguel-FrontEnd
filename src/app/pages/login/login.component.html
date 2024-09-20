@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">JOGADOR DE ALUGUEL</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="textoNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Destaques</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Jogadores</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Eventos</a>
+          </li>
+      </ul>
+      
+    </div>
+  </nav>
+
+
+<div class="conteudo-login">
+    <form class="conteudo-form" [formGroup]="loginForm" (submit)="submitLogin()">
+        <div class="logo">
+            Logo
+        </div>
+        <div>
+            <div>
+                <input class="input-login" placeholder="email" formControlName="email" />
+            </div>
+            <div class="mensagem-erro" 
+                *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched">
+                Campo Obrigatório!
+            </div>
+            <div class="mensagem-erro" 
+                *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched">
+                Formato do Email nao é válido!
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <input class="input-login" type="password" placeholder="senha" formControlName="senha" />
+            </div>
+            <div class="mensagem-erro" 
+                *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched">
+                Campo Obrigatório!
+            </div>
+        </div>
+
+        <div>
+            <button class="input-submit"[disabled]="!loginForm.valid"> Logar</button>
+        </div>
+
+    </form>
+</div>
