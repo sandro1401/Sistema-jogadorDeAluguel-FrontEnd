@@ -1,0 +1,24 @@
+<div>
+    <h2>Editar Usuário</h2>
+  
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="Nome">
+      </mat-form-field>   
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="Email">
+      </mat-form-field>   <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput formControlName="Senha">
+      </mat-form-field>   <mat-form-field appearance="fill">
+        <mat-label>Tipo</mat-label>
+        <input matInput formControlName="Tipo">
+      </mat-form-field>   
+  
+      <button mat-raised-button color="primary" type="submit">Salvar Alterações</button>
+      <button mat-raised-button color="primary" type="submit">voltar</button>
+    </form>
+  </div>
+  

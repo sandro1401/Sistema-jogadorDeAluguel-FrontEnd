@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">JOGADOR DE ALUGUEL</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="textoNavbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Destaques</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Jogadores</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">Eventos</a>
+        </li>
+    </ul>
+    
+  </div>
+</nav>
+
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <label for="Nome">Nome:</label>
+  <input id="Nome" formControlName="Nome" type="text" />
+
+  <label for="Email">Email:</label>
+  <input id="Email" formControlName="Email" type="email" />
+
+  <label for="Senha">Senha:</label>
+  <input id="Senha" formControlName="Senha" type="password" [disabled]="isEditMode" />
+
+  <label for="Tipo">Tipo:</label>
+  <input id="Tipo" formControlName="Tipo" type="text" />
+
+  <button type="submit"> Cadastrar </button>
+  
+  <form [action]="'/edit-user/' + userId" method="get">
+    <label for="userId">ID do Usuário:</label>
+    <input type="text" id="userId" name="userId" required>
+    <button type="submit">Buscar e Editar</button>
+  </form>
+
+
+
+
+</form>
+

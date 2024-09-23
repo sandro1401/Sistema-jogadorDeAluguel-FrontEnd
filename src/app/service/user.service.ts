@@ -12,4 +12,11 @@ export class UserService {
   registerUser(userData: any): Observable<any> {
     return this.http.post(this.apiUrl_Usuario, userData);
   }
+  getUserById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl_Usuario}/${id}`); // Ajuste para o seu endpoint
+  }
+
+  updateUser(id: string, userData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl_Usuario}/${id}`, userData); // Ajuste para o seu endpoint
+  }
 }

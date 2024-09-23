@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { loginModel } from '../../models/loginModel';
 
 @Component({
@@ -12,11 +12,10 @@ export class LoginComponent  implements OnInit{
 
   loginForm! : FormGroup;
 
-  constructor(private formBuider: FormBuilder,
-    private router: Router){}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
-    this.loginForm = this.formBuider.group(
+    this.loginForm = this.formBuilder.group(
       {
         email: ["", [Validators.required, Validators.email]],
         senha: ["", [Validators.required]]
@@ -27,6 +26,8 @@ export class LoginComponent  implements OnInit{
   submitLogin(){
     debugger
     var dadosLogin = this.loginForm.getRawValue() as loginModel;
+    this.router.navigate(['/home']);
+    
   }
 
 }
