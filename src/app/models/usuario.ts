@@ -1,6 +1,6 @@
-export class usuários{
+export class Usuario{
     Nome!: string;
-    senha!: string;
+    Email!: string;
     Senha!: string;
     Tipo!: string;
 

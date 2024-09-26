@@ -22,20 +22,39 @@
   </div>
 </nav>
 
-
+<div class="container">
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-  <label for="Nome">Nome:</label>
-  <input id="Nome" formControlName="Nome" type="text" />
+  
+  <div class="mb-3">
+    <label for="Nome"  class="form-label">Nome:</label>
+  <input [(ngModel)]="usuario.Nome" class="form-control"
+  formControlName="Nome" type="text"
+  id="Nome" placeholder="Nome ..."/>
 
-  <label for="Email">Email:</label>
-  <input id="Email" formControlName="Email" type="email" />
+  </div>
+<div class="mb-3">
+  <label for="Email"  class="form-label">Email:</label>
+  <input [(ngModel)]="usuario.Email" class="form-control"
+  formControlName="Email" type="text"
+  id="Email" placeholder="Email ..."/>
+</div>
 
-  <label for="Senha">Senha:</label>
-  <input id="Senha" formControlName="Senha" type="password" [disabled]="isEditMode" />
+<div class="mb-3">
+  <label for="Senha" class="form-label">Senha:</label>
+  <input  [(ngModel)]="usuario.Senha" class="form-control" 
+  formControlName="Senha" 
+  id="Senha" type="password" [disabled]="isEditMode" 
+  placeholder="Senha ..." />
 
-  <label for="Tipo">Tipo:</label>
-  <input id="Tipo" formControlName="Tipo" type="text" />
+</div>
+  
+<div class="mb-3">
+  <label for="Tipo" class="form-label">Tipo:</label>
+  <input [(ngModel)]="usuario.Tipo" class="form-control" formControlName="Tipo"
+  id="Tipo" placeholder="Tipo ..."/>
 
+</div>
+ 
   <button type="submit"> Cadastrar </button>
   
   <form [action]="'/edit-user/' + userId" method="get">
@@ -44,8 +63,6 @@
     <button type="submit">Buscar e Editar</button>
   </form>
 
-
-
-
 </form>
 
+</div>

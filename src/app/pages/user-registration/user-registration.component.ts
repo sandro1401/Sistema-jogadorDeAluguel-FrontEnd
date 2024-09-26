@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../service/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Usuario } from '../../models/usuario';
 
 
 
@@ -12,6 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class UserRegistrationComponent  implements OnInit{
   registrationForm: FormGroup;
+  usuario = new Usuario();
   userId: string | null = null;
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router,  private route: ActivatedRoute) {
@@ -69,7 +71,7 @@ export class UserRegistrationComponent  implements OnInit{
         this.userService.registerUser(userData).subscribe(
           (response) => {
             console.log('Usuário cadastrado com sucesso', response);
-            this.router.navigate(['/home']);
+            this.router.navigate(['pages/home']);
             // Aqui você pode adicionar lógica para redirecionar o usuário ou exibir uma mensagem de sucesso
           },
           (error) => {
