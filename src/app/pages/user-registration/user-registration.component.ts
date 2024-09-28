@@ -11,7 +11,7 @@ import { Usuario } from '../../models/usuario';
   templateUrl: './user-registration.component.html',
   styleUrl: './user-registration.component.css'
 })
-export class UserRegistrationComponent  implements OnInit{
+export class UserRegistrationComponent {
   registrationForm: FormGroup;
   usuario = new Usuario();
   userId: string | null = null;
@@ -22,39 +22,22 @@ export class UserRegistrationComponent  implements OnInit{
       Email: ['', [Validators.required, Validators.email]],
       Senha: ['', Validators.required],
       Tipo: ['', Validators.required],
+      userId: ['', Validators.required],
     });
   }
-  ngOnInit(): void {
-    // Verifica se estamos editando um usuário existente
-    this.userId = this.route.snapshot.paramMap.get('id');
-    if (this.userId) {
-      this.isEditMode = true;
-      this.loadUserData(this.userId);
-    }
-  }
+ 
   isEditMode: boolean = false;
 
  
-  
-  loadUserData(id: string) {
-    this.userService.getUserById(id).subscribe(
-      (user) => {
-        // Preenche o formulário com os dados do usuário
-        this.registrationForm.patchValue({
-          Nome: user.data.Nome,
-          Email: user.data.Email,
-          Senha: user.data.Senha,
-          Tipo: user.data.Tipo,
-        });
-      },
-      (error) => {
-        console.error('Erro ao carregar dados do usuário', error);
-      }
-    );
 
+  buscarUsuario() {
+    const id = this.registrationForm.get('userId')?.value;
+    if (id) {
+      this.router.navigate([`/edit-user/${id}`]);
+    } else {
+      console.error('ID do usuário não pode ser nulo');
+    }
   }
-  
-
   onSubmit() {
     if (this.registrationForm.valid) {
       //console.log('Form Submitted', this.registrationForm.value);

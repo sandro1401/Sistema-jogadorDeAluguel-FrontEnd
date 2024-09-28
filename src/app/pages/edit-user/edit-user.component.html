@@ -1,20 +1,20 @@
 <div>
     <h2>Editar Usuário</h2>
   
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <form  (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Nome</mat-label>
-        <input matInput formControlName="Nome">
+        <input type="text" [(ngModel)]="usuario.Nome" formControlName="Nome">
       </mat-form-field>   
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="Email">
+        <input type="text" [(ngModel)]="usuario.Email" formControlName="Email">
       </mat-form-field>   <mat-form-field appearance="fill">
         <mat-label>Senha</mat-label>
-        <input matInput formControlName="Senha">
+        <input type="text" [(ngModel)]="usuario.Senha" formControlName="Senha">
       </mat-form-field>   <mat-form-field appearance="fill">
         <mat-label>Tipo</mat-label>
-        <input matInput formControlName="Tipo">
+        <input type="text" [(ngModel)]="usuario.Tipo" formControlName="Tipo">
       </mat-form-field>   
   
       <button mat-raised-button color="primary" type="submit">Salvar Alterações</button>

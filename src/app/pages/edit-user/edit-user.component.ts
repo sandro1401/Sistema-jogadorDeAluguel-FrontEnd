@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from '../../models/usuario';
 
 @Component({
   selector: 'app-edit-user',
@@ -10,33 +11,45 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class EditUserComponent implements OnInit{
   registrationForm: FormGroup;
+ 
   userId: string | null = null;
+  usuario = new Usuario();
   
-  constructor(private fb: FormBuilder,private route: ActivatedRoute, private userService: UserService, private router: Router,) { 
-   this.registrationForm = this.fb.group({
-    Nome: ['', Validators.required],
-    Email: ['', [Validators.required, Validators.email]],
-    Senha: ['', Validators.required],
-    Tipo: ['', Validators.required],
+  constructor(private userService: UserService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router,) { 
+    this.registrationForm = this.fb.group({
+      Nome: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email]],
+      Senha: ['', Validators.required],
+      Tipo: ['', Validators.required],
+      userId: ['', Validators.required],
+    });
+  }
+
+ngOnInit(): void {
+  this.route.params.subscribe(params => {
+    const id = params['id'];
+    this.getUserById(id);
   });
 }
-ngOnInit(): void {
-  // Verifica se estamos editando um usuário existente
-  this.userId = this.route.snapshot.paramMap.get('id');
-  if (this.userId) {
-    this.isEditMode = true;
-    this.loadUserData(this.userId);
+async getUserById(id: string) {
+  try {
+    const usuario = await this.userService.getUserById(id).toPromise();
+    this.usuario = usuario;
+    console.log(this.usuario?.Nome || 'Nome não encontrado'); // Acessando Nome de forma segura
+  } catch (error) {
+    console.error('Erro ao buscar usuário:', error);
   }
 }
+
 loadUserData(id: string) {
   this.userService.getUserById(id).subscribe(
-    (user) => {
+    (usuario) => {
       // Preenche o formulário com os dados do usuário
       this.registrationForm.patchValue({
-        Nome: user.data.Nome,
-        Email: user.data.Email,
-        Senha: user.data.Senha,
-        Tipo: user.data.Tipo,
+        Nome: usuario.data.Nome,
+        Email: usuario.data.Email,
+        Senha: usuario.data.Senha,
+        Tipo: usuario.data.Tipo,
       });
     },
     (error) => {

@@ -14,7 +14,7 @@ import { UserRegistrationComponent } from './pages/user-registration/user-regist
 import { provideHttpClient } from '@angular/common/http';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { ListaUsuarioComponent } from './pages/lista-usuario/lista-usuario.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +23,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     UserRegistrationComponent,
     LoginComponent,
     EditUserComponent,
+    ListaUsuarioComponent,
   
     
   ],

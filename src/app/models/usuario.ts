@@ -1,7 +1,8 @@
 export class Usuario{
-    Nome!: string;
-    Email!: string;
-    Senha!: string;
-    Tipo!: string;
+    id?: number;
+    Nome?: string;
+    Email?: string;
+    Senha?: string;
+    Tipo?: string;
 
 }

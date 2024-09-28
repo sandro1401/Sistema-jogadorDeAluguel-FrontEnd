@@ -1,0 +1,30 @@
+<div class="container">
+    <h3>Lista de Usuários</h3>
+
+    
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>TIPO</th>
+                <th>AÇÃO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.Nome}}</td>
+                <td>{{usuario.Email}}</td>
+                <td>{{usuario.Tipo}}</td>
+                
+                <td> <a class="btn btn-primary" routerLink="/edit-user/{{usuario.id}}">Editar</a></td>
+       
+    
+            </tr>
+            
+        </tbody>
+        
+    </table>
+</div>

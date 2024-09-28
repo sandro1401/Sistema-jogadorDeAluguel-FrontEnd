@@ -53,15 +53,17 @@
   <input [(ngModel)]="usuario.Tipo" class="form-control" formControlName="Tipo"
   id="Tipo" placeholder="Tipo ..."/>
 
+  <button type="submit"> Cadastrar </button>
 </div>
  
-  <button type="submit"> Cadastrar </button>
   
-  <form [action]="'/edit-user/' + userId" method="get">
-    <label for="userId">ID do Usuário:</label>
-    <input type="text" id="userId" name="userId" required>
+<div>
+  <form [formGroup]="registrationForm" (ngSubmit)="buscarUsuario()" >
+    <label for="userId">Buscar Usuário por Id:</label>
+    <input type="text" id="userId" formControlName="userId" required>
     <button type="submit">Buscar e Editar</button>
   </form>
+</div>
 
 </form>
 
